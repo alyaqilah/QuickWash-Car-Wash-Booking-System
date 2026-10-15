@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="550.0" prefWidth="520.0" spacing="20.0" styleClass="dashboard-root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.quickwashproject.LoginController">
+   <padding>
+      <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
+   </padding>
+   <children>
+      <!-- Hero Banner Header -->
+      <HBox alignment="CENTER" maxWidth="380.0" styleClass="hero-banner">
+         <padding>
+            <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
+         </padding>
+         <children>
+            <VBox alignment="CENTER" spacing="4.0">
+               <children>
+                  <Label styleClass="hero-title" text="🚗 QuickWash Portal" />
+                  <Label styleClass="hero-subtitle" text="Car Wash Booking &amp; Management System" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+
+      <!-- Main Login Card -->
+      <VBox maxWidth="380.0" spacing="16.0" styleClass="modern-card">
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+         <children>
+            <Label styleClass="card-section-title" text="Account Sign In" />
+
+            <VBox spacing="6.0">
+               <children>
+                  <Label styleClass="field-label" text="Username" />
+                  <TextField fx:id="usernameField" promptText="Enter your username" styleClass="modern-input" />
+               </children>
+            </VBox>
+
+            <VBox spacing="6.0">
+               <children>
+                  <Label styleClass="field-label" text="Password" />
+                  <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="modern-input" />
+               </children>
+            </VBox>
+
+            <VBox spacing="10.0">
+               <padding>
+                  <Insets top="8.0" />
+               </padding>
+               <children>
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefHeight="35.0" prefWidth="300.0" styleClass="btn-primary" text="Login">
+                    <tooltip>
+                       <Tooltip text="Click to authenticate and open your dashboard" />
+                    </tooltip>
+                 </Button>
+
+                 <Button mnemonicParsing="false" onAction="#handleGoToRegister" prefHeight="30.0" prefWidth="300.0" styleClass="btn-secondary" text="Don't have an account? Register here">
+                    <tooltip>
+                       <Tooltip text="Create a new QuickWash account" />
+                    </tooltip>
+                 </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+
+      <!-- Status Label for Authentication Messages -->
+      <Label fx:id="statusLabel" textFill="#d97706" />
+   </children>
+</VBox>

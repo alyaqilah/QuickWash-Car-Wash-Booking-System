@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="700.0" prefWidth="950.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.quickwashproject.ProfileController">
+   <children>
+      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Navigation">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#goToReservation" text="Booking Dashboard" />
+              <MenuItem mnemonicParsing="false" onAction="#goToPrice" text="Price Listing" />
+              <MenuItem mnemonicParsing="false" onAction="#goToGuide" text="Station Guide" />
+              <MenuItem mnemonicParsing="false" onAction="#goToProfile" text="User Profile" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+
+      <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <content>
+            <VBox spacing="18.0" styleClass="dashboard-root">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="20.0" />
+               </padding>
+               <children>
+                  <!-- Hero Banner Header -->
+                  <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="hero-banner">
+                     <children>
+                        <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="hero-title" text="👤 User Profile &amp; Booking History" />
+                              <Label styleClass="hero-subtitle" text="View account tier status, review past reservations, and generate PDF receipts." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+
+                  <!-- Account Details Card -->
+                  <VBox spacing="10.0" styleClass="modern-card">
+                     <padding>
+                        <Insets bottom="18.0" left="20.0" right="20.0" top="18.0" />
+                     </padding>
+                     <children>
+                        <Label styleClass="card-section-title" text="Account Overview" />
+                        <Label fx:id="accountDetailsLabel" text="Loading account details..." textFill="#2f3e46" wrapText="true" />
+                     </children>
+                  </VBox>
+
+                  <!-- Bookings History Table Card -->
+                  <VBox spacing="12.0" styleClass="modern-card" VBox.vgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="18.0" left="20.0" right="20.0" top="18.0" />
+                     </padding>
+                     <children>
+                        <Label styleClass="card-section-title" text="Your Active &amp; Past Bookings" />
+                        <TableView fx:id="bookingTable" prefHeight="280.0">
+                          <columns>
+                            <TableColumn fx:id="idCol" prefWidth="45.0" text="ID" />
+                            <TableColumn fx:id="plateCol" prefWidth="95.0" text="License Plate" />
+                            <TableColumn fx:id="sizeCol" prefWidth="90.0" text="Vehicle Size" />
+                            <TableColumn fx:id="packageCol" prefWidth="110.0" text="Package" />
+                            <TableColumn fx:id="addOnsCol" prefWidth="105.0" text="Add-ons" />
+                            <TableColumn fx:id="dateCol" prefWidth="100.0" text="Preferred Date" />
+                            <TableColumn fx:id="timeSlotCol" prefWidth="120.0" text="Time Slot" />
+                            <TableColumn fx:id="priceCol" prefWidth="80.0" text="Total (RM)" />
+                            <TableColumn fx:id="createdAtCol" prefWidth="120.0" text="Timestamp" />
+                            <TableColumn fx:id="statusCol" prefWidth="110.0" text="Status" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+
+                  <!-- Action Bar Card -->
+                  <HBox alignment="CENTER_RIGHT" spacing="12.0" styleClass="checkout-card">
+                     <padding>
+                        <Insets bottom="18.0" left="25.0" right="25.0" top="18.0" />
+                     </padding>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleDownloadReceipt" styleClass="btn-primary" text="Download Selected Receipt PDF" />
+                        <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="btn-secondary" text="Return to Reservation Page" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

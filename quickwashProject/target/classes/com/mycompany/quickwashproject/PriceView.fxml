@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.quickwashproject.PriceController">
+   <children>
+      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Navigation">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#goToReservation" text="Booking Dashboard" />
+              <MenuItem mnemonicParsing="false" onAction="#goToPrice" text="Price Listing" />
+              <MenuItem mnemonicParsing="false" onAction="#goToGuide" text="Station Guide" />
+              <MenuItem mnemonicParsing="false" onAction="#goToProfile" text="User Profile" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+
+      <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <content>
+            <VBox spacing="18.0" styleClass="dashboard-root">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="20.0" />
+               </padding>
+               <children>
+                  <!-- Hero Banner -->
+                  <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="hero-banner">
+                     <children>
+                        <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="hero-title" text="💰 Service Packages &amp; Pricing" />
+                              <Label styleClass="hero-subtitle" text="Review our standard packages, transparent pricing, and add-on options." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+
+                  <!-- Card 1: Quick Wash -->
+                  <VBox spacing="8.0" styleClass="modern-card">
+                     <padding><Insets bottom="16.0" left="20.0" right="20.0" top="16.0"/></padding>
+                     <children>
+                        <Label styleClass="card-section-title" text="Quick Wash — RM 25.00" />
+                        <Label text="Exterior foam wash, high-pressure rinse, and hand dry. Perfect for a quick refresh." textFill="#2f3e46" />
+                     </children>
+                  </VBox>
+
+                  <!-- Card 2: Deluxe Wash -->
+                  <VBox spacing="8.0" styleClass="modern-card">
+                     <padding><Insets bottom="16.0" left="20.0" right="20.0" top="16.0"/></padding>
+                     <children>
+                        <Label styleClass="card-section-title" text="Deluxe Wash — RM 55.00" />
+                        <Label text="Includes Quick Wash features + dashboard wipe-down, window cleaning, and wheel shine." textFill="#2f3e46" />
+                     </children>
+                  </VBox>
+
+                  <!-- Card 3: Full Detail -->
+                  <VBox spacing="8.0" styleClass="modern-card">
+                     <padding><Insets bottom="16.0" left="20.0" right="20.0" top="16.0"/></padding>
+                     <children>
+                        <Label styleClass="card-section-title" text="Full Detail — RM 120.00" />
+                        <Label text="Comprehensive wash + complete interior vacuum, premium wax polish, and leather conditioning." textFill="#2f3e46" />
+                     </children>
+                  </VBox>
+
+                  <!-- Card 4: Surcharges & Add-ons -->
+                  <VBox spacing="8.0" styleClass="modern-card">
+                     <padding><Insets bottom="16.0" left="20.0" right="20.0" top="16.0"/></padding>
+                     <children>
+                        <Label styleClass="card-section-title" text="Additional Services &amp; Surcharges" />
+                        <Label text="• SUV / Van Surcharge: +RM 20.00 applied to base packages." textFill="#2f3e46" />
+                        <Label text="• Vacuum Add-on: RM 15.00  |  Wax Polish Add-on: RM 40.00  |  Tire Shine Add-on: RM 20.00" textFill="#2f3e46" />
+                     </children>
+                  </VBox>
+
+                  <!-- Bottom Action Bar -->
+                  <HBox alignment="CENTER_RIGHT" styleClass="checkout-card">
+                     <padding><Insets bottom="20.0" left="25.0" right="25.0" top="20.0"/></padding>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="btn-primary" text="Proceed to Booking" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

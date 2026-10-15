@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="750.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.quickwashproject.ReservationController">
+   <children>
+      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Navigation">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#goToReservation" text="Booking Dashboard" />
+              <MenuItem mnemonicParsing="false" onAction="#goToPrice" text="Price Listing" />
+              <MenuItem mnemonicParsing="false" onAction="#goToGuide" text="Station Guide" />
+              <MenuItem mnemonicParsing="false" onAction="#goToProfile" text="User Profile" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+
+      <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <content>
+            <VBox spacing="18.0" styleClass="dashboard-root">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="20.0" />
+               </padding>
+               <children>
+                  <!-- Header & Active Membership Tier Banner with Fixed Spacing -->
+                  <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="hero-banner">
+                     <children>
+                        <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="hero-title" text="🚗 QuickWash Booking Portal" />
+                              <Label styleClass="hero-subtitle" text="Select your vehicle details and preferred package below" />
+                           </children>
+                        </VBox>
+                        <Label fx:id="tierBadgeLabel" alignment="CENTER" minWidth="160.0" styleClass="tier-badge" text="Tier: Level 1 (Starter)" />
+                     </children>
+                  </HBox>
+
+                  <!-- 1. Vehicle Information Card -->
+                  <VBox spacing="12.0" styleClass="modern-card">
+                     <padding><Insets bottom="18.0" left="20.0" right="20.0" top="18.0"/></padding>
+                     <children>
+                        <Label styleClass="card-section-title" text="1. Vehicle Information" />
+                        <HBox alignment="CENTER_LEFT" spacing="20.0">
+                           <children>
+                              <Label prefWidth="110.0" styleClass="field-label" text="License Plate:" />
+                              <TextField fx:id="licensePlateField" prefWidth="240.0" promptText="e.g., WXY 1234" styleClass="modern-input" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="20.0">
+                           <children>
+                              <Label prefWidth="110.0" styleClass="field-label" text="Vehicle Size:" />
+                              <RadioButton fx:id="sedanRadio" mnemonicParsing="false" text="Sedan (Base)" textFill="#2d3748">
+                                 <toggleGroup><ToggleGroup fx:id="vehicleGroup" /></toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="suvRadio" mnemonicParsing="false" text="SUV / Van (+RM20.00)" textFill="#2d3748" toggleGroup="$vehicleGroup" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+
+                  <!-- 2. Wash Package Card -->
+                  <VBox spacing="12.0" styleClass="modern-card">
+                     <padding><Insets bottom="18.0" left="20.0" right="20.0" top="18.0"/></padding>
+                     <children>
+                        <Label styleClass="card-section-title" text="2. Select Wash Package" />
+                        <HBox spacing="25.0">
+                           <children>
+                              <RadioButton fx:id="quickWashRadio" mnemonicParsing="false" text="Quick Wash (RM 25.00)" textFill="#2d3748">
+                                 <toggleGroup><ToggleGroup fx:id="packageGroup" /></toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="deluxeWashRadio" mnemonicParsing="false" text="Deluxe Wash (RM 55.00)" textFill="#2d3748" toggleGroup="$packageGroup" />
+                              <RadioButton fx:id="fullDetailRadio" mnemonicParsing="false" text="Full Detail (RM 120.00)" textFill="#2d3748" toggleGroup="$packageGroup" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+
+                  <!-- 3. Additional Services Card -->
+                  <VBox spacing="12.0" styleClass="modern-card">
+                     <padding><Insets bottom="18.0" left="20.0" right="20.0" top="18.0"/></padding>
+                     <children>
+                        <Label styleClass="card-section-title" text="3. Optional Add-ons" />
+                        <HBox spacing="30.0">
+                           <children>
+                              <CheckBox fx:id="vacuumCheckBox" mnemonicParsing="false" text="Vacuum (RM 15.00)" textFill="#2d3748" />
+                              <CheckBox fx:id="waxCheckBox" mnemonicParsing="false" text="Wax Polish (RM 40.00)" textFill="#2d3748" />
+                              <CheckBox fx:id="tireCheckBox" mnemonicParsing="false" text="Tire Shine (RM 20.00)" textFill="#2d3748" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+
+                  <!-- 4. Date & Time Slot Card -->
+                  <VBox spacing="12.0" styleClass="modern-card">
+                     <padding><Insets bottom="18.0" left="20.0" right="20.0" top="18.0"/></padding>
+                     <children>
+                        <Label styleClass="card-section-title" text="4. Preferred Date &amp; Time Slot" />
+                        <HBox alignment="CENTER_LEFT" spacing="20.0">
+                           <children>
+                              <DatePicker fx:id="bookingDatePicker" prefWidth="200.0" promptText="Select Date" styleClass="modern-input" />
+                              <ComboBox fx:id="timeSlotCombo" prefWidth="220.0" promptText="Select Time Slot" styleClass="modern-input" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+
+                  <!-- Pricing Summary & Actions Bar with Tooltips -->
+                  <HBox alignment="CENTER_LEFT" styleClass="checkout-card">
+                     <padding><Insets bottom="20.0" left="25.0" right="25.0" top="20.0"/></padding>
+                     <children>
+                        <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Total Payable Amount:" textFill="#4a5568">
+                                 <font><Font name="System Bold" size="13.0"/></font>
+                              </Label>
+                              <Label fx:id="totalPriceLabel" text="RM 0.00" textFill="#1a202c">
+                                 <font><Font name="System Bold" size="26.0"/></font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <HBox spacing="12.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleCalculateTotal" styleClass="btn-secondary" text="Calculate Total">
+                                 <tooltip>
+                                    <Tooltip text="Click to calculate total price and membership discount" />
+                                 </tooltip>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#handleSaveToDatabase" styleClass="btn-primary" text="Save Reservation">
+                                 <tooltip>
+                                    <Tooltip text="Save booking record into the database" />
+                                 </tooltip>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
